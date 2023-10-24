@@ -1,7 +1,9 @@
-import Image from 'next/image'
+import { NavigationMenu } from '~/navigation-menu/components/navigation-menu'
 
 export default function Home() {
   return (
-    <main>a</main>
+    <main>
+      <NavigationMenu />
+    </main>
   )
 }
