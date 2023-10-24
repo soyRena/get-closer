@@ -41,7 +41,7 @@ devDependencies:
     specifier: ^8
     version: 8.4.31
   tailwindcss:
-    specifier: ^3
+    specifier: ^3.3.3
     version: 3.3.3
   typescript:
     specifier: ^5
