@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <aside className="w-64">
                 <NavigationMenu />
               </aside>
-              <main className="flex-1 p-6">{children}</main>
+              <main className="flex flex-col items-center gap-10 p-6">{children}</main>
             </div>
           </div>
         </QueryProvider>
