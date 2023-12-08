@@ -5,12 +5,12 @@ const itemsMap = [
   {
     label: 'Dashboard',
     icon: <LayoutGrid fill="#2c2c2c" color="#2c2c2c" size="18" />,
-    goTo: '#'
+    goTo: '/'
   },
   {
     label: 'Endereços',
     icon: <Pin fill="#2c2c2c" color="#2c2c2c" size="18" />,
-    goTo: '#'
+    goTo: '/address'
   },
   {
     label: 'Contato',
