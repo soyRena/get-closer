@@ -1,10 +1,8 @@
-import { AddressSearchInput } from '~/address-search-input/components/address-search-input'
-import { FirstAccessModal } from '~/first-access-modal/components/first-access-modal'
+import { AddressSearchInput } from "~/components/address-search-input/address-search-input";
 
 export default function Home() {
   return (
     <>
-      {/* <FirstAccessModal /> */}
       <AddressSearchInput />
     </>
   )

@@ -1,6 +1,6 @@
 import { Combobox } from '@headlessui/react'
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete'
-import { AddressInformation } from '../types'
+import { AddressInformation } from '../../types/address-information'
 
 interface FirstAccessModalFormProps {
   addressList: AddressInformation[]

@@ -1,8 +1,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { NavigationMenu } from '~/navigation-menu/components/navigation-menu'
-import QueryProvider from '~/shared/providers/query-provider'
+import { NavigationMenu } from '~/components/navigation-menu/navigation-menu'
+import QueryProvider from '~/providers/query-provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,14 +16,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={inter.className}>
         <QueryProvider>
-            <div className="h-screen flex flex-col">
-              <div className="flex flex-1">
-                <aside className="w-64">
-                  <NavigationMenu />
-                </aside>
-                <main className="flex-1 p-6">{children}</main>
-              </div>
+          <div className="h-screen flex flex-col">
+            <div className="flex flex-1">
+              <aside className="w-64">
+                <NavigationMenu />
+              </aside>
+              <main className="flex-1 p-6">{children}</main>
             </div>
+          </div>
         </QueryProvider>
       </body>
     </html>
