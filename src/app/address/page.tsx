@@ -1,7 +1,5 @@
+import { RegisterAddress } from '~/components/register-address/register-address'
+
 export default function AddresssHome() {
-  return (
-    <>
-      <h1>testa</h1>
-    </>
-  )
+  return <RegisterAddress />
 }
