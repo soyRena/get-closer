@@ -5,7 +5,7 @@ export function EmptyAddressState() {
   const { push } = useRouter()
 
   return (
-    <div className="bg-white rounded-2xl box-border w-3/5 p-8 flex flex-col gap-8 mt-32">
+    <div className="bg-white rounded-2xl box-border w-3/5 p-8 flex flex-col gap-8">
       <h1 className="text-2xl font-bold text-neutral-900">Você ainda não tem endereços cadastrados</h1>
       <div className="flex flex-col gap-4">
         <p className="text-sm  text-neutral-700">
