@@ -16,14 +16,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={inter.className}>
         <QueryProvider>
-          <div className="h-screen flex flex-col">
-            <div className="flex flex-1">
+            <div className="flex flex-1 h-screen">
               <aside className="w-64">
                 <NavigationMenu />
               </aside>
-              <main className="flex flex-col items-center gap-10 p-6">{children}</main>
+              <main className="flex flex-col items-center gap-10 p-6 w-screen">{children}</main>
             </div>
-          </div>
         </QueryProvider>
       </body>
     </html>
