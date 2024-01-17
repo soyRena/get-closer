@@ -1,13 +1,13 @@
 import { Combobox } from '@headlessui/react'
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete'
-import { AddressInformation } from '../../shared/types'
+import { AddressInformation } from '../../../../shared/types'
 
 interface AddressListAutoCompleteInputProps {
   addressList: AddressInformation[]
   setAddressList: (value: AddressInformation[]) => void
 }
 
-export function AddressListAutoCompleteInput(props: AddressListAutoCompleteInputProps) {
+export function AddressListHomeAutoCompleteInput(props: AddressListAutoCompleteInputProps) {
   const { addressList, setAddressList } = props
 
   const {

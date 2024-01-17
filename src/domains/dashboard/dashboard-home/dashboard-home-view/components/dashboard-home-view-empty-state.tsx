@@ -1,3 +1,5 @@
+'use client'
+
 import { ArrowRightCircle } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 

@@ -1,13 +1,13 @@
 import { Trash2 } from 'lucide-react'
-import { AddressInformation } from '../../shared/types'
+import { AddressInformation } from '../../../shared/types'
 
-interface AddressListItemsProps {
+interface AddressListGroupAddressItemsProps {
   addressInformation: AddressInformation
   addressList: AddressInformation[]
   setAddressList: (value: AddressInformation[]) => void
 }
 
-export function AddressListItems(props: AddressListItemsProps) {
+export function AddressListGroupAddressItems(props: AddressListGroupAddressItemsProps) {
   const { addressInformation, addressList, setAddressList } = props
 
   function deleteAddress() {
