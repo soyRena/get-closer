@@ -1,7 +1,7 @@
 import { ArrowRightCircle } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
-export function EmptyAddressState() {
+export function DashboardHomeViewEmptyAddressList() {
   const { push } = useRouter()
 
   return (

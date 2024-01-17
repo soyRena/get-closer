@@ -1,13 +1,5 @@
-'use client'
-
-import { AddressSearchInput } from '~/components/address-search-input/address-search-input'
-import { EmptyAddressState } from '~/components/empty-address-state/empty-address-state'
-import { clientSideOnly } from '~/helpers/client-side'
+import { DashboardHomeView } from '~/domains/dashboard/dashboard-home/dashboard-home-view/components/dashboard-home-view'
 
 export default function Home() {
-  const registeredAddress = clientSideOnly(() => window.localStorage.getItem('SAVED_ADDRESS'))
-
-  console.log(registeredAddress)
-
-  return <>{Boolean(registeredAddress) ? <AddressSearchInput /> : <EmptyAddressState />}</>
+  return <DashboardHomeView />
 }

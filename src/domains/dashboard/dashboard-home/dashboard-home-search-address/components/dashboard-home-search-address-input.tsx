@@ -1,6 +1,6 @@
 import { Search } from 'lucide-react'
 
-export function AddressSearchInput() {
+export function DashboardHomeSearchAddressInput() {
   return (
     <div className="flex flex-col items-center">
       <form>
