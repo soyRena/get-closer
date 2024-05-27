@@ -26,8 +26,6 @@ export function DashboardHomeAddressInformation({ address }: { address?: Address
 
   const getNearestAddress = getRegisteredAddress[data?.destinationIndex]
 
-  console.log(data)
-
   return (
     <>
       {isSuccess ? (
