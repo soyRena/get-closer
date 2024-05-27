@@ -7,6 +7,14 @@ import { AddressInformation, DistanceMatrix, TravelMode } from '~/domains/shared
 interface CalculateDistanceMatrixProps extends DistanceMatrix {
   address?: AddressInformation
 }
+
+interface CalculateDistanceMatrixResponse {
+  destinationIndex: number
+  distanceMeters: number
+  condition: string
+  duration: number
+}
+
 export async function fetchCalculateDistanceMatrix({ origins, destinations, travelMode }: DistanceMatrix) {
   const response = await axios.post(
     `https://routes.googleapis.com/distanceMatrix/v2:computeRouteMatrix`,
@@ -18,7 +26,7 @@ export async function fetchCalculateDistanceMatrix({ origins, destinations, trav
     {
       headers: {
         'X-Goog-Api-Key': process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-        'X-Goog-FieldMask': 'originIndex,destinationIndex,duration,distanceMeters,status,condition'
+        'X-Goog-FieldMask': 'destinationIndex,distanceMeters,condition,duration'
       }
     }
   )
@@ -32,11 +40,17 @@ export function useCalculateDistanceMatrix({
   travelMode = TravelMode.driving,
   address
 }: CalculateDistanceMatrixProps) {
-  const { data, ...restQuery } = useQuery({
+  const { data: rawData, ...restQuery } = useQuery<CalculateDistanceMatrixResponse[]>({
     queryKey: ['useCalculateDistanceMatrix', origins, destinations, travelMode],
     queryFn: () => fetchCalculateDistanceMatrix({ origins, destinations, travelMode }),
     enabled: Boolean(address)
   })
 
-  return { data, ...restQuery }
+  const sortDistanceByAscending = rawData?.sort((a, b) => {
+    return a.distanceMeters - b.distanceMeters
+  }) || []
+
+  const getNearestAddress = sortDistanceByAscending[0]
+
+  return { data: getNearestAddress, ...restQuery }
 }

@@ -12,15 +12,13 @@ const libraries: Libraries = ['places']
 
 export function AddressListHome() {
   const [addressList, setAddressList] = useState<AddressInformation[]>(
-    clientSideOnly(() => JSON.parse(window.localStorage.getItem('SAVED_ADDRESS') as string))
+    clientSideOnly(() => JSON.parse(window.localStorage.getItem('SAVED_ADDRESS') as string)) || []
   )
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
     libraries
   })
-
-  console.log(addressList)
 
   useEffect(() => {
     clientSideOnly(() => window.localStorage.setItem('SAVED_ADDRESS', JSON.stringify(addressList)))
