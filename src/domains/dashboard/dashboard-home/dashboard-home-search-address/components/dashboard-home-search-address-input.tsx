@@ -1,7 +1,8 @@
-import { Combobox } from '@headlessui/react'
-import { Search } from 'lucide-react'
+import { Combobox, ComboboxButton, ComboboxInput, ComboboxOption, ComboboxOptions, Transition } from '@headlessui/react'
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete'
 import { AddressInformation } from '~/domains/shared/types'
+
+import { IoMdSearch } from 'react-icons/io'
 
 interface DashboardHomeSearchAddressInputProps {
   setSearchAddress: (value: AddressInformation) => void
@@ -29,39 +30,34 @@ export function DashboardHomeSearchAddressInput(props: DashboardHomeSearchAddres
   }
 
   return (
-    <div className="flex flex-col items-center w-2/5">
-      <Combobox onChange={onPlaceChange}>
-        <>
-          <div className="w-full flex gap-2 items-center py-4 pl-4 pr-8 cursor-default overflow-hidden rounded-lg bg-white text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
-            <Combobox.Input
-              onChange={event => setValue(event.target.value)}
-              value={value}
-              className="w-full border-none py-2 pl-2 text-sm leading-5 text-gray-900 focus:ring-0"
-              placeholder="Ex: Rua Maria da Silva, 123"
-            />
-            <Search size={18} />
-          </div>
-
-          <Combobox.Options className="mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base ring-1 ring-black/5 focus:outline-none sm:text-sm">
-            {data.length === 0 || status !== 'OK' ? (
-              <div className="cursor-default select-none py-4 pl-4 text-gray-700">Nothing found.</div>
-            ) : (
-              data.map(({ place_id, description }) => (
-                <Combobox.Option
-                  key={place_id}
-                  value={description}
-                  className={({ active }) =>
-                    `cursor-default select-none px-4 py-4 pr-4 ${active ? 'bg-zinc-600 text-white' : 'text-gray-900'}`
-                  }
-                >
-                  {({ selected }) => (
-                    <span className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}>{description}</span>
-                  )}
-                </Combobox.Option>
-              ))
-            )}
-          </Combobox.Options>
-        </>
+    <div className="mx-auto w-200 pt-10">
+      <Combobox value={value} onChange={onPlaceChange}>
+        <div className="relative">
+          <ComboboxInput
+            className="w-full rounded-lg border-none bg-white/5 py-1.5 pr-8 pl-3 text-sm/6 text-white focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
+            value={value}
+            onChange={event => setValue(event.target.value)}
+          />
+          <ComboboxButton className="group absolute inset-y-0 right-0 px-2.5">
+            <IoMdSearch className="size-4 fill-white/60 group-data-[hover]:fill-white" />
+          </ComboboxButton>
+        </div>
+        <Transition leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
+          <ComboboxOptions
+            anchor="bottom"
+            className="w-[var(--input-width)] rounded-xl border border-white/5 bg-white/5 p-1 [--anchor-gap:var(--spacing-1)] empty:hidden"
+          >
+            {data.map(({ place_id, description }) => (
+              <ComboboxOption
+                key={place_id}
+                value={description}
+                className="group flex cursor-default items-center gap-2 rounded-lg py-1.5 px-3 select-none data-[focus]:bg-white/10"
+              >
+                <div className="text-sm/6 text-white">{description}</div>
+              </ComboboxOption>
+            ))}
+          </ComboboxOptions>
+        </Transition>
       </Combobox>
     </div>
   )
